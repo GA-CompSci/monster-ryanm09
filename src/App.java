@@ -3,6 +3,7 @@ import java.util.Scanner;
 public class App {
     //CLASS VARIABLE
     private static Monster[] monsters;
+    
     public static void main(String[] args) throws Exception {
         System.out.println("----- MONSTER BATTLE! -----");
 
@@ -16,7 +17,31 @@ public class App {
         }
         //HOW MANY MONSTERS HAVE MORE THAN 50 HEALTH?
         System.out.println(monsterCount(50) + " monsters have more than 50 health");
+
+        //WHAT IS THE % OF DEFEATED MONSTERS?
+        System.out.println("Current progress: " + percentComplete() + "%");
+
+        //DISPLAY MONSTER STATUS
+        reportMonsters();
+
     }
+
+        public static double percentComplete(){
+            return 100 - monsterCount(0)/ monsters.length * 100;
+        }
+
+        public static void reportMonsters(){
+            System.out.println("\n----------- MONSTER REPORT -----------");
+            //a full traversal
+            for(int i = 0; i < monsters.length; i++){
+                System.out.print("[" + i + "]");
+                System.out.println(" - Health: " + monsters[i].health());
+                System.out.println(" - Damage: " + monsters[i].damage());
+                System.out.println(" - Speed: " + monsters[i].speed());
+                if(!monsters[i].special().equals("")) System.out.print(" - Special: " + monsters[i].special());
+
+            }
+        }
 
     /**
      * How many monsters have over the given healh
@@ -40,4 +65,6 @@ public class App {
         return null;
     }
 
+    
+    
 }
