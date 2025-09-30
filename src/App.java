@@ -3,6 +3,12 @@ import java.util.Scanner;
 public class App {
     //CLASS VARIABLE
     private static Monster[] monsters;
+    // PLAYER STATS
+    private static int health = 100;
+    private static int speed = 10;
+    private static int shield = 50;
+    private static int damage = 50;
+    private static int heal = 50;
     
     public static void main(String[] args) throws Exception {
         System.out.println("----- MONSTER BATTLE! -----");
@@ -15,14 +21,65 @@ public class App {
         for(int i = 0; i < monsters.length; i++){
             monsters[i] = new Monster(); //TODO: add some specials
         }
-        //HOW MANY MONSTERS HAVE MORE THAN 50 HEALTH?
-        System.out.println(monsterCount(50) + " monsters have more than 50 health");
 
-        //WHAT IS THE % OF DEFEATED MONSTERS?
-        System.out.println("Current progress: " + percentComplete() + "%");
+        // PICK YOUR BUILD
+        // give options
+            System.out.println("---- PICK YOUR BUILD ----");
+            System.out.println("1) DPS");
+            System.out.println("2) The Tank");
+            System.out.println("3) Vampire");
+            System.out.println("4) Ninja");
+            System.out.println("Choice");
+            int choice = input.nextInt(); // TODO: Error handle on bad input
+            // CUSTOMIZE THE BUILD
+            if(choice == 1){
+                //DPS has little healing and weak shield
+                
+            } else if(choice == 2){
+
+            } else if(choice == 3){
+
+            } else {
+
+            }
 
         //DISPLAY MONSTER STATUS
         reportMonsters();
+
+        // PICK A MONSTER
+        Monster currentMonster = getNextMonster();
+        
+        //----GAME LOOP----
+        while(monsterCount(0) > 0){
+            // who goes first?
+
+            // give options
+            System.out.println("---- OPTIONS ----");
+            System.out.println("1) Attack");
+            System.out.println("2) Defend");
+            System.out.println("3) Heal");
+            System.out.println("4) Pass");
+            System.out.println("Choice");
+            int choice = input.nextInt(); // TODO: Error handle on bad input
+
+            if(choice == 1){
+                
+            } else if(choice == 2){
+
+            } else if(choice == 3){
+
+            } else {
+
+            }
+
+            // DO I NEED A NEW MONSTER?
+            if(currentMonster.health() <= 0){
+                System.out.println("\nYOU HAVE SLAIN A MONSTER!\n");
+                currentMonster = getNextMonster();
+                reportMonsters();
+            }
+
+        }
 
     }
 
@@ -39,6 +96,9 @@ public class App {
                 System.out.println(" - Damage: " + monsters[i].damage());
                 System.out.println(" - Speed: " + monsters[i].speed());
                 if(!monsters[i].special().equals("")) System.out.print(" - Special: " + monsters[i].special());
+
+                //new line at the end of the loop
+                System.out.println();
 
             }
         }

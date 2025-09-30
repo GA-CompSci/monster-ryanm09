@@ -24,8 +24,15 @@ public class Monster {
     }
     //ACCESSOR METHODS
     public int health() { return health; }
-    public double damage() { return Math.round(damage()); }
-    public int speed() { return speed(); }
-    public String special() { return special(); }
+    public double damage() { return Math.round(damage * 100.0) / 100.0; }
+    public int speed() { return this.speed; }
+    public String special() { return this.special; }
+
+    // MUTATOR METHODS
+    public void takeDamage(){
+
+    }
+
+    
 
 }
