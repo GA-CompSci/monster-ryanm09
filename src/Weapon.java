@@ -18,4 +18,3 @@ public class Weapon {
         return this.damage;
     }
 }
-
