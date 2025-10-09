@@ -16,11 +16,11 @@ public class App {
         System.out.println("----- MONSTER BATTLE! -----");
         Scanner input = new Scanner(System.in);
         System.out.print("How many monsters will you fight?: ");
-        int choice = input.nextInt(); // TODO: handle errors if it's not a number
+        int choice = input.nextInt();
         monsters = new Monster[choice];
         // build all the monsters
         for (int i = 0; i < monsters.length; i++) {
-            monsters[i] = new Monster(); // TODO: add some specials
+            monsters[i] = new Monster();
         }
 
         // PICK YOUR BUILD
@@ -31,7 +31,7 @@ public class App {
         System.out.println("3) Healer");
         System.out.println("4) Ninja");
         System.out.println("Choice: ");
-        choice = input.nextInt(); // TODO: Error handle on bad input
+        choice = input.nextInt();
         // CUSTOMIZE THE BUILD
         if (choice == 1) {
             // fighters have little healing and weak shield
@@ -53,7 +53,6 @@ public class App {
 
         // PICK A MONSTER
         Monster currentMonster = getNextMonster();
-
         // ----GAME LOOP----
         while (monsterCount(0) > 0) {
             // who goes first?
@@ -65,7 +64,7 @@ public class App {
             System.out.println("3) Heal");
             System.out.println("4) Pass");
             System.out.print("Choice: ");
-            int move = input.nextInt(); // TODO: Error handle on bad input
+            int move = input.nextInt();
 
             // ATTACK
             if (move == 1) {
@@ -120,6 +119,19 @@ public class App {
                 }
                 health -= incomingDamage;
             }
+
+            //Is our player defeated? - SHOULD WE EXIT THE GAME
+            if (health <= 0) {
+                reportMonsters();
+                System.out.println("-----YOU LOSE! GAME OVER!-----");
+                break;
+            }
+        } // close game loop   
+        
+        // END OF GAME WRAP UP
+        if (health > 0){
+            System.out.println("GG! You have defeated all " + monsters.length + " monsters!");
+        }
     }
 
     public static void reportMonsters() {
